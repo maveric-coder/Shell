@@ -1,23 +1,6 @@
 ## Shell Scripting
 
-### Shell Scripting Exercises
-
-|Name|Topic|Objective & Instructions|Solution|Comments|
-|--------|--------|------|----|----|
-|Hello World|Variables|[Exercise](hello_world.md)|[Solution](solutions/hello_world.md) | Basic
-|Basic date|Variables|[Exercise](basic_date.md)|[Solution](solutions/basic_date.md) | Basic
-|Great Day|Variables|[Exercise](great_day.md)|[Solution](solutions/great_day.md) | Basic
-|Factors|Arithmetic|[Exercise](factors.md)|[Solution](solutions/factors.md) | Basic
-|Argument Check|Conditionals|[Exercise](argument_check.md)|[Solution](solutions/argument_check.md) | Basic
-|Files Size|For Loops|[Exercise](files_size.md)|[Solution](solutions/files_size.md) | Basic
-|Count Chars|Input + While Loops|[Exercise](count_chars.md)|[Solution](solutions/count_chars.md) | Basic
-|Sum|Functions|[Exercise](sum.md)|[Solution](solutions/sum.md) | Basic
-|Number of Arguments|Case Statement|[Exercise](num_of_args.md)|[Solution](solutions/num_of_args.md) | Basic
-|Empty Files|Misc|[Exercise](empty_files.md)|[Solution](solutions/empty_files.md) | Basic
-|Directories Comparison|Misc|[Exercise](directories_comparison.md)|[Solution](solutions/directories_comparison.md) | Basic
-|It's alive!|Misc|[Exercise](host_status.md)|[Solution](solutions/host_status.md) | Intermediate
-
-## Shell Scripting - Self Assessment
+## Shell Scripting
 
 <details>
 <summary><b>What does this line in shell scripts means?: <code>#!/bin/bash</code></summary><br></b>
@@ -57,7 +40,7 @@ $ echo $?
 If we want to make a shell script exit whenever any command within the script fails, you can use the set -e option. This option tells the shell to exit immediately if any command within the script exits with a non-zero status.
 
 Unfortunately, this solution won't help if your script contains piped statements. If we want to run multiple commands without failing if any one fails, let's add -o pipefail to the first command. `set -eo pipefail`
-
+</details>
 
 <details>
 <summary><b>Advantages of shell scripts</b></summary><br>
@@ -293,3 +276,20 @@ https://superuser.com/a/1060002/167769
 
 bats
 </b></details>
+
+### Shell Scripting Exercises
+
+|Name|Topic|Objective & Instructions|Solution|Comments|
+|--------|--------|------|----|----|
+|Hello World|Variables|[Exercise](hello_world.md)|[Solution](solutions/hello_world.md) | Basic
+|Basic date|Variables|[Exercise](basic_date.md)|[Solution](solutions/basic_date.md) | Basic
+|Great Day|Variables|[Exercise](great_day.md)|[Solution](solutions/great_day.md) | Basic
+|Factors|Arithmetic|[Exercise](factors.md)|[Solution](solutions/factors.md) | Basic
+|Argument Check|Conditionals|[Exercise](argument_check.md)|[Solution](solutions/argument_check.md) | Basic
+|Files Size|For Loops|[Exercise](files_size.md)|[Solution](solutions/files_size.md) | Basic
+|Count Chars|Input + While Loops|[Exercise](count_chars.md)|[Solution](solutions/count_chars.md) | Basic
+|Sum|Functions|[Exercise](sum.md)|[Solution](solutions/sum.md) | Basic
+|Number of Arguments|Case Statement|[Exercise](num_of_args.md)|[Solution](solutions/num_of_args.md) | Basic
+|Empty Files|Misc|[Exercise](empty_files.md)|[Solution](solutions/empty_files.md) | Basic
+|Directories Comparison|Misc|[Exercise](directories_comparison.md)|[Solution](solutions/directories_comparison.md) | Basic
+|It's alive!|Misc|[Exercise](host_status.md)|[Solution](solutions/host_status.md) | Intermediate
