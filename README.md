@@ -1,9 +1,71 @@
-## Shell Scripting
+## Shell
+
+### vi Editor
+
+Editing files using the screen-oriented text editor vi is one of the best ways. This editor enables you to edit lines in context with other lines in the file.
+
+You will notice a tilde (~) on each line following the cursor. A tilde represents an unused line. If a line does not begin with a tilde and appears to be blank, there is a space, tab, newline, or some other non-viewable character present.
+
+vi always starts in the command mode. To enter text, you must be in the insert mode for which simply type `i`. To come out of the insert mode, press the `Esc` key.
+|Command|Description|
+|-----|-------------------------|
+|`:q`| To quit out of vi|
+|`:q!`| To ignore this message, the command to quit out of vi without saving|
+|`:w`| The command to save the contents of the editor|
+|`:wq`| To save and quit `ZZ` does the same|
+|`:w filename2`| To save the currently working file with another name|
+|`:s/search/replace/g`| The substitution command (:s/) enables you to quickly replace words or groups of words within your files|
+
+**Editing Files**
+|Command|Description|
+|-----|-------------------------|
+|`i`| Inserts text before the current cursor location|
+|`I`| Inserts text at the beginning of the current line|
+|`a`| Inserts text after the current cursor location|
+|`A`| Inserts text at the end of the current line|
+|`o`| Creates a new line for text entry below the cursor location|
+|`O`| Creates a new line for text entry above the cursor location|
+
+**Set Commands**
+
+You can change the look and feel of your vi screen using the following `:set` commands.
+|Command|Description|
+|-----|-------------------------|	
+|:set ic| Ignores the case when searching|
+|:set ai| Sets autoindent|
+|:set noai| Unsets autoindent|	
+|:set nu| Displays lines with line numbers on the left side|
+|:set sw| Sets the width of a software tabstop. For example, you would set a shift width of 4 with this command — :set sw = 4|
+|:set ws| If wrapscan is set, and the word is not found at the bottom of the file, it will try searching for it at the beginning|
+|:set wm| If this option has a value greater than zero, the editor will automatically "word wrap". For example, to set the wrap margin to two characters, you would type this: :set wm = 2|
+|:set ro| Changes file type to "read only"|
+|:set term| Prints terminal type|
+|:set bf| Discards control characters from input|
+
+**Running Commands**
+
+The vi has the capability to run commands from within the editor. To run a command, you only need to go to the command mode and type `:!` command.
+
+For example, if you want to check whether a file exists before you try to save your file with that filename, you can type `:! ls` and you will see the output of `ls` on the screen.
+
+You can press any key (or the command's escape sequence) to return to your vi session.
+
+**Word and Character Searching**
+
+The vi editor has two kinds of searches: string and character. For a string search, the / and ? commands are used. When you start these commands, the command just typed will be shown on the last line of the screen, where you type the particular string to look for.
+
+These two commands differ only in the direction where the search takes place −
+
+The / command searches forwards (downwards) in the file.
+
+The ? command searches backwards (upwards) in the file.
+
+
 
 ## Shell Scripting
 
 <details>
-<summary><b>What does this line in shell scripts means?: <code>#!/bin/bash</code></summary><br></b>
+<summary>What does this line in shell scripts means?: <code>#!/bin/bash</code></summary><br>
 
 `#!/bin/bash`
 
@@ -13,7 +75,7 @@
 
 
 <details>
-<summary><b>True or False? When a certain command/line fails in a shell script, the shell script, by default, will exit and stop running</summary><br></b>
+<summary>True or False? When a certain command/line fails in a shell script, the shell script, by default, will exit and stop running</summary><br>
 
 Depends on the language and settings used.
 In case of a bash script even after a command fails, it will continue to execute next line(s). 
@@ -43,7 +105,7 @@ Unfortunately, this solution won't help if your script contains piped statements
 </details>
 
 <details>
-<summary><b>Advantages of shell scripts</b></summary><br>
+<summary>Advantages of shell scripts</summary><br>
 
   * Shell scripting is meant to be simple and efficient. 
 
@@ -56,13 +118,13 @@ Unfortunately, this solution won't help if your script contains piped statements
 #### Shell Script - Variables
 
 <details>
-<summary><b>How to define a variable with the value "Hello World"?</b></summary><br>
+<summary>How to define a variable with the value "Hello World"?</summary><br>
 
 `HW="Hello World`
 </details>
 
 <details>
-<summary><b>How to define a variable with the value of the current date?</b></summary><br>
+<summary>How to define a variable with the value of the current date?</summary><br>
 
 `DATE=$(date)`
 </details>
@@ -74,16 +136,16 @@ Unfortunately, this solution won't help if your script contains piped statements
 </b></details>
 
 <details>
-<summary>Write a script to print "yay" unless an argument was passed and then print that argument</summary><br><b>
+<summary>Write a script to print "yay" unless an argument was passed and then print that argument</summary><br>
 
 ```
 echo "${1:-yay}"
 ```
-</b></details>
+</details>
 
 
 <details>
-<summary><b>Explain what would be the result of $_ commands:</b></summary>
+<summary>Explain what would be the result of $_ commands:</summary>
 
 `$0` - Name of the script
 
@@ -131,14 +193,14 @@ read -s -p "Enter a Password: " my_var
 </details>
 
 <details>
-<summary>How to compare variables length?</summary><br><b>
+<summary>How to compare variables length?</summary><br>
 
 ```
 if [[ ${#string} != ${#string_two} ]]; then
     run command
 fi
 ```
-</b></details>
+</details>
 
 #### Shell Scripting - Conditionals
 
@@ -434,15 +496,97 @@ done
 #### Shell Scripting - Troubleshooting
 
 <details>
-<summary>How do you debug shell scripts?</summary><br><b>
+<summary>How do you debug shell scripts?</summary><br>
 
-Answer depends on the language you are using for writing your scripts. If Bash is used for example then:
+You need to pass the -x or -v argument to bash shell to walk through each line in the script.
 
-  * Adding -x to the script I'm running in Bash
-  * Old good way of adding echo statements
+Using the -x option to debug a bash shell script
 
-If Python, then using pdb is very useful.
-</b></details>
+Run a shell script with -x option. The syntax is:
+```bash
+bash -x script-name
+bash -x domains.sh
+```
+Bash shell offers debugging options which can be turn on or off using the set command:
+
+`set -x` : Display commands and their arguments as they are executed.
+`set -v` : Display shell input lines as they are read.
+
+Example
+
+You can use above two command in shell script itself:
+```bash
+#!/bin/bash
+clear
+ 
+# turn on debug mode
+set -x
+for f in *
+do
+   file $f
+done
+# turn OFF debug mode
+set +x
+ls
+# more commands
+```
+You can replace the standard Shebang line:
+
+`#!/bin/bash`
+
+with the following (for debugging) code:
+
+`#!/bin/bash -xv`
+
+**Debugging Common Bash Shell Scripting Errors**
+
+Bash or sh or ksh gives various error messages on screen and in many case the error message may not provide detailed information.
+
+When you write your first hello world bash shell script, you might end up getting an error that read as follows:
+
+```bash
+bash: ./hello.sh: Permission denied
+```
+Set permission using chmod command:
+```bash
+chmod +x hello.sh
+./hello.sh
+bash hello.sh
+```
+
+End of file unexpected Error
+
+If you are getting an End of file unexpected error message, open your script file and and make sure it has both opening and closing quotes. In this example, the echo statement has an opening quote but no closing quote:
+```bash
+#!/bin/bash
+...
+....
+echo 'Error: File not found
+                                        ^^^^^^^
+                                        missing quote
+```
+Also make sure you check for missing parentheses and braces ({}):
+```bash
+#!/bin/bash
+.....
+[ ! -d $DIRNAME ] && { echo "Error: Chroot dir not found"; exit 1;
+                                                                    ^^^^^^^^^^^^^
+                                                                    missing brace }
+...
+```
+Missing Keywords Such As fi, esac, ;;, etc.
+
+If you missed ending keyword such as fi or ;; you will get an error such as as “xxx unexpected”. So make sure all nested if and case statements ends with proper keywords. 
+
+Tip: 
+Turn On Syntax Highlighting when using vim text editor
+
+Most modern text editors allows you to set syntax highlighting option. This is useful to detect syntax and prevent common errors such as opening or closing quote. You can see bash script in different colors. 
+
+And use `man` and `help` to get list of all valid use cases for all commands
+
+
+</details>
 
 <details>
 <summary>Running the following bash script, we don't get 2 as a result, why?
@@ -451,44 +595,57 @@ If Python, then using pdb is very useful.
 x = 2
 echo $x
 ```
-</summary><br><b>
+</summary><br>
 
 Should be `x=2`
-</b></details>
+</details>
 
 #### Shell Scripting - Substring
 
 <details>
-<summary>How to extract everything after the last dot in a string?</summary><br><b>
+<summary>How to extract everything after the last dot in a string?</summary><br>
 
 `${var//*.}`
-</b></details>
+</details>
 
 <details>
-<summary>How to extract everything before the last dot in a string?</summary><br><b>
+<summary>How to extract everything before the last dot in a string?</summary><br>
 
 ${var%.*}
-</b></details>
+</details>
 
 #### Shell Scripting - Misc
 
 <details>
-<summary>Generate 8 digit random number</summary><br><b>
+<summary>Generate 8 digit random number</summary><br>
+```bash
+rand=''
+for i in {1..9}; do
+    rand="${rand}$(( $RANDOM % 10 ))"
+done
 
-shuf -i 9999999-99999999 -n 1
-</b></details>
+echo $rand
+```
+</details>
 
 <details>
 <summary>Can you give an example to some Bash best practices?</summary><br><b>
 </b></details>
 
 <details>
-<summary>What is the ternary operator? How do you use it in bash?</summary><br><b>
+<summary>What is the ternary operator? How do you use it in bash?</summary><br>
 
-A short way of using if/else. An example:
+The ternary operator is a compact and efficient way to write conditional expressions. It’s a shorthand way of writing an if-else statement that returns a value.
 
-[[ $a = 1 ]] && b="yes, equal" || b="nope"
-</b></details>
+```bash
+((condition ? value_if_true : value_if_false))
+
+a=1; b=2
+z=$((a > b ? a : b))
+echo "$z"
+2
+```
+</details>
 
 <details>
 <summary>What does the following code do and when would you use it?
@@ -496,15 +653,14 @@ A short way of using if/else. An example:
 <code>diff <(ls /tmp) <(ls /var/tmp)</code>
 
 </summary><br>
-It is called 'process substitution'. It provides a way to pass the output of a command to another command when using a pipe <code>|</code> is not possible. It can be used when a command does not support <code>STDIN</code> or you need the output of multiple commands.
+It is called 'process substitution'. 
+
+It provides a way to pass the output of a command to another command when using a pipe <code>|</code> is not possible. It can be used when a command does not support <code>STDIN</code> or you need the output of multiple commands.
+
 https://superuser.com/a/1060002/167769
+
 </details>
 
-<details>
-<summary>What are you using for testing shell scripts?</summary><br><b>
-
-bats
-</b></details>
 
 ### Shell Scripting Exercises
 
