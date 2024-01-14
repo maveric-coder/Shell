@@ -352,7 +352,7 @@ Another way: `expr 1 + 2`
 
 
 <details>
-<summary>How to check if a given number has 4 as a factor?</summary><br><b>
+<summary>How to check if a given number has 4 as a factor?</summary><br>
 
 `if [ $(($1 % 4)) -eq 0 ]; then`
 </details>
