@@ -618,6 +618,7 @@ ${var%.*}
 
 <details>
 <summary>Generate 8 digit random number</summary><br>
+	
 ```bash
 rand=''
 for i in {1..9}; do
@@ -628,9 +629,6 @@ echo $rand
 ```
 </details>
 
-<details>
-<summary>Can you give an example to some Bash best practices?</summary><br><b>
-</b></details>
 
 <details>
 <summary>What is the ternary operator? How do you use it in bash?</summary><br>
