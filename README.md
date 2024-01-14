@@ -85,79 +85,185 @@ echo "${1:-yay}"
 <details>
 <summary><b>Explain what would be the result of $_ commands:</b></summary>
 
+`$0` - Name of the script
 
-`$_` -- The default parameter for a lot of functions.
-`$.` -- Holds the current record or line number of the file handle that was last read. It is read-only and will be reset to 0 when the file handle is closed.
-`$/` -- Holds the input record separator. The record separator is usually the newline character. However, if $/ is set to an empty string, two or more newlines in the input file will be treated as one.
-`$,` -- The output separator for the print() function. Nor-mally, this variable is an empty string. However, setting $, to a newline might be useful if you need to print each element in the parameter list on a separate line.
-`$\` -- Added as an invisible last element to the parameters passed to the print() function. Normally, an empty string, but if you want to add a newline or some other suffix to everything that is printed, you can assign the suffix to $.
-`$#` -- The default format for printed numbers. Normally, it's set to %.20g, but you can use the format specifiers covered in the section "Example: Printing Revisited" in Chapter 9to specify your own default format.
-`$%` -- Holds the current page number for the default file handle. If you use select() to change the default file handle, $% will change to reflect the page number of the newly selected file handle.
-`$=` -- Holds the current page length for the default file handle. Changing the default file handle will change $= to reflect the page length of the new file handle.
-`$-` -- Holds the number of lines left to print for the default file handle. Changing the default file handle will change $- to reflect the number of lines left to print for the new file handle.
-`$~` -- Holds the name of the default line format for the default file handle. Normally, it is equal to the file handle's name.
-`$^` -- Holds the name of the default heading format for the default file handle. Normally, it is equal to the file handle's name with _TOP appended to it.
-`$|` -- If nonzero, will flush the output buffer after every write() or print() function. Normally, it is set to 0.
-`$$` -- This UNIX-based variable holds the process number of the process running the Perl interpreter.
-`$?` -- Holds the status of the last pipe close, back-quote string, or system() function.
-`$&` -- Holds the string that was matched by the last successful pattern match.
-`$`` -- Holds the string that preceded whatever was matched by the last successful pattern match.
-`$'` -- Holds the string that followed whatever was matched by the last successful pattern match.
-`$+` -- Holds the string matched by the last bracket in the last successful pattern match. For example, the statement /Fieldname: (.*)|Fldname: (.*)/ && ($fName = $+); will find the name of a field even if you don't know which of the two possible spellings will be used.
-`$*` -- Changes the interpretation of the ^ and $ pattern anchors. Setting $* to 1 is the same as using the /m option with the regular expression matching and substitution operators. Normally, $* is equal to 0.
-`$0` -- Holds the name of the file containing the Perl script being executed.
-`$<number>` -- This group of variables ($1, $2, $3, and so on) holds the regular expression pattern memory. Each set of parentheses in a pattern stores the string that match the components surrounded by the parentheses into one of the $<number> variables.
-`$[` -- Holds the base array index. Normally, it's set to 0. Most Perl authors recommend against changing it without a very good reason.
-`$]` -- Holds a string that identifies which version of Perl you are using. When used in a numeric context, it will be equal to the version number plus the patch level divided by 1000.
-`$"` -- This is the separator used between list elements when an array variable is interpolated into a double-quoted string. Normally, its value is a space character.
-`$;` -- Holds the subscript separator for multidimensional array emulation. Its use is beyond the scope of this book.
-`$!` -- When used in a numeric context, holds the current value of errno. If used in a string context, will hold the error string associated with errno.
-`$@` -- Holds the syntax error message, if any, from the last eval() function call.
-`$<` - This UNIX-based variable holds the read uid of the current process.
-`$>` -- This UNIX-based variable holds the effective uid of the current process.
-`$)` -- This UNIX-based variable holds the read gid of the current process. If the process belongs to multiple groups, then $) will hold a string consisting of the group names separated by spaces.
-`$:` -- Holds a string that consists of the characters that can be used to end a word when word-wrapping is performed by the ^ report formatting character. Normally, the string consists of the space, newline, and dash characters.
-`$^D` -- Holds the current value of the debugging flags. For more information.
-`$^F` -- Holds the value of the maximum system file description. Normally, it's set to 2. The use of this variable is beyond the scope of this book.
-`$^I` -- Holds the file extension used to create a backup file for the in-place editing specified by the -i command line option. For example, it could be equal to ".bak."
-`$^L` -- Holds the string used to eject a page for report printing.
-`$^P` - This variable is an internal flag that the debugger clears so it will not debug itself.
-`$^T` -- Holds the time, in seconds, at which the script begins running.
-`$^W` -- Holds the current value of the -w command line option.
-`$^X` -- Holds the full pathname of the Perl interpreter being used to run the current script.
+`$n` - `$1` to `$9` - Arguments to the script. $1 is the first argument and so on.
+
+`$@` - All the arguments
+
+`$#` - Number of arguments in the script
+
+`$?` - Return code of the previous command
+
+`$$` - Process identification number (PID) for the current script
+
+`$*` - It stores complete set of positional parameter in a single string
+
+`$!` - check PID of last background Job
+
+`!!` - Entire last command, including arguments. A common pattern is to execute a command only for it to fail due to missing permissions; you can quickly re-execute the command with sudo by doing sudo !!
+
+`$_` - Last argument from the last command.
+
+
 </details>
 
 <details>
-<summary>What is <code>$@</code>?</summary><br><b>
-</b></details>
-
-<details>
-<summary>What is difference between <code>$@</code> and <code>$*</code>?</summary><br><b>
+<summary>Difference between `$@` and `$*`?</summary><br><b>
 
 `$@` is an array of all the arguments passed to the script
 `$*` is a single string of all the arguments passed to the script
 </b></details>
 
 <details>
-<summary>How do you get input from the user in shell scripts?</summary><br><b>
+<summary>How to get input from user in shell script?</summary><br>
 
-Using the keyword <code>read</code> so for example <code>read x</code> will wait for user input and will store it in the variable x.
-</b></details>
+By using read in your shell scripts, you can prompt the user for input and store the results in a variable. You can also use read to read in one value using a variable to prompt the user for another value. 
+
+This tells the script to prompt the user for input. The text inside the quotes after the -p is displayed to the user when they are prompted. 
+```bash
+$ read -p "What is your name? " my_var
+```
+The read command provides the silent mode option with “-s” to hide the input characters from the screen. A sample script to take password input from the user.
+```bash
+read -s -p "Enter a Password: " my_var
+```
+</details>
 
 <details>
 <summary>How to compare variables length?</summary><br><b>
 
 ```
-if [ ${#1} -ne ${#2} ]; then
-    ...
+if [[ ${#string} != ${#string_two} ]]; then
+    run command
+fi
 ```
 </b></details>
 
 #### Shell Scripting - Conditionals
 
 <details>
-<summary>Explain conditionals and demonstrate how to use them</summary><br><b>
-</b></details>
+<summary>Explain conditionals and demonstrate how to use them</summary><br>
+
+**if statement**
+
+This block will process if specified condition is true.
+
+Syntax:
+```bash
+if [ expression ]
+then
+   statement
+fi
+```
+
+**if-else statement**
+
+If specified condition is not true in if part then else part will be execute.
+
+Syntax
+```bash
+if [ expression ]
+then
+   statement1
+else
+   statement2
+fi
+```
+
+**if..elif..else..fi statement (Else If ladder)**
+
+To use multiple conditions in one if-else block, then elif keyword is used in shell. If expression1 is true then it executes statement 1 and 2, and this process continues. If none of the condition is true then it processes else part.
+
+Syntax
+
+```bash
+if [ expression1 ]
+then
+   statement1
+   statement2
+   .
+   .
+elif [ expression2 ]
+then
+   statement3
+   statement4
+   .
+   .
+else
+   statement5
+fi
+```
+
+**if..then..else..if..then..fi..fi..(Nested if)**
+
+Nested if-else block can be used when, one condition is satisfies then it again checks another condition. In the syntax, if expression1 is false then it processes else part, and again expression2 will be check.
+
+Syntax:
+```bash
+if [ expression1 ]
+then
+   statement1
+   statement2
+   .
+else
+   if [ expression2 ]
+   then
+      statement3
+      .
+   fi
+fi
+```
+eg:
+```bash
+#Initializing two variables 
+a=10 
+b=20 
+
+#Check whether they are equal 
+if [ $a == $b ] 
+then 
+	echo "a is equal to b"
+fi 
+
+#Check whether they are not equal 
+if [ $a != $b ] 
+then 
+	echo "a is not equal to b"
+fi 
+
+```
+
+**Switch statement**
+
+case statement works as a switch statement if specified value match with the pattern then it will execute a block of that particular pattern
+When a match is found all of the associated statements until the double semicolon (;;) is executed.
+A case will be terminated when the last command is executed.
+If there is no match, the exit status of the case is zero.
+
+Syntax:
+```bash
+case  in
+   Pattern 1) Statement 1;;
+   Pattern n) Statement n;;
+esac
+```
+```bash
+CARS="bmw"
+
+#Pass the variable in string 
+case "$CARS" in 
+	#case 1 
+	"mercedes") echo "Headquarters - Affalterbach, Germany" ;; 
+	
+	#case 2 
+	"audi") echo "Headquarters - Ingolstadt, Germany" ;; 
+	
+	#case 3 
+	"bmw") echo "Headquarters - Chennai, Tamil Nadu, India" ;; 
+esac 
+```
+</details>
 
 <details>
 <summary>In shell scripting, how to negate a conditional?</summary><br><b>
@@ -176,31 +282,154 @@ if [[ ${var//*.} =~ $regex ]]; then
 #### Shell Scripting - Arithmetic Operations
 
 <details>
-<summary>How to perform arithmetic operations on numbers?</summary><br><b>
+<summary>How to perform arithmetic operations on numbers?</summary><br>
 
 One way: `$(( 1 + 2 ))`
 Another way: `expr 1 + 2`
-</b></details>
+</details>
 
-<details>
-<summary>How to perform arithmetic operations on numbers?</summary><br><b>
-</b></details>
 
 <details>
 <summary>How to check if a given number has 4 as a factor?</summary><br><b>
 
 `if [ $(($1 % 4)) -eq 0 ]; then`
-</b></details>
+</details>
 
 #### Shell Scripting - Loops
 
 <details>
-<summary>What is a loop? What types of loops are you familiar with?</summary><br><b>
-</b></details>
+<summary>What is a loop? What types of loops are you familiar with?</summary><br>
 
-<details>
-<summary>Demonstrate how to use loops</summary><br><b>
-</b></details>
+**While Loop**
+
+The while loop executes the given commands until the given condition remains true; the until loop executes until a given condition becomes true.
+
+Syntax
+
+```bash
+while [ condition ]
+do
+command1
+command2
+done
+```
+
+All the loops support nesting concept which means you can put one loop inside another similar one or different loops. This nesting can go up to unlimited number of times based on your requirement.
+
+Syntax
+
+```bash
+while command1 ; # this is loop1, the outer loop
+do
+   Statement(s) to be executed if command1 is true
+
+   while command2 ; # this is loop2, the inner loop
+   do
+      Statement(s) to be executed if command2 is true
+   done
+
+   Statement(s) to be executed if command1 is true
+done
+```
+eg
+```bash
+#!/bin/sh
+
+a=0
+while [ "$a" -lt 10 ]    # this is loop1
+do
+   b="$a"
+   while [ "$b" -ge 0 ]  # this is loop2
+   do
+      echo -n "$b "
+      b=`expr $b - 1`
+   done
+   echo
+   a=`expr $a + 1`
+done
+```
+
+**For Loop**
+
+For loop is another type of looping statement to execute a set of commands for a certain number of times.
+
+Syntax:
+```bash
+for var in list
+do
+command 1
+command 2
+done
+```
+
+eg:
+
+```bash
+#!/bin/sh
+
+for var in 0 1 2 3 4 5 6 7 8 9
+do
+   echo $var
+done
+```
+
+**Until Loop**
+
+Until loop is one of the looping statements in the shell scripting and this looping statement is similar to the while loop statement which we have discussed earlier. The difference between two is, it will execute the body of the loop until the conditional statement becomes true whereas while loop executes commands if the condition is true. 
+
+Syntax:
+
+```bash
+until [ conditional statement ]
+do
+command1
+command2
+done
+```
+eg:
+```bash
+number = 1
+until [ $number –gt 10 ]
+do
+echo $number
+((number++))
+done
+```
+
+**Select Loop**
+The select loop provides an easy way to create a numbered menu from which users can select options. It is useful when you need to ask the user to choose one or more items from a list of choices.
+
+Syntax
+```bash
+select var in word1 word2 ... wordN
+do
+   Statement(s) to be executed for every word.
+done
+```
+eg:
+```bash
+#!/bin/ksh
+
+select DRINK in tea cofee water juice appe all none
+do
+   case $DRINK in
+      tea|cofee|water|all) 
+         echo "Go to canteen"
+         ;;
+      juice|appe)
+         echo "Available at home"
+      ;;
+      none) 
+         break 
+      ;;
+      *) echo "ERROR: Invalid selection" 
+      ;;
+   esac
+done
+```
+</details>
+
+
 
 #### Shell Scripting - Troubleshooting
 
