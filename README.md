@@ -709,14 +709,29 @@ https://superuser.com/a/1060002/167769
 
 ### Shell Scripting Exercises
 <details><summary>
-1. Define a variable with the string 'Hello World'<br>
-2. Print the value of the variable you've defined and redirect the output to the file "amazing_output.txt"
+Define a variable with the string 'Hello World'. Print the value of the variable you've defined and redirect the output to the file "file1.txt"
 </summary>
 	
 ```bash
 #!/usr/bin/env bash
 
 HW_STR="Hello World"
-echo $HW_STR > amazing_output.txt
+echo $HW_STR > file.txt
+```
+</details>
+
+<details><summary>
+Read input from the user until you get empty string. For each of the lines you read, count the number of characters and print it
+</summary>
+
+```bash
+#!/usr/bin/env bash
+
+echo -n "Please insert your input: "
+
+while read line; do
+    echo -n "$line" | wc -c
+    echo -n "Please insert your input: "
+done
 ```
 </details>
