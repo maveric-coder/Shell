@@ -60,7 +60,54 @@ The / command searches forwards (downwards) in the file.
 
 The ? command searches backwards (upwards) in the file.
 
+## Listing files
+|File Type and Permission|no. of Memory blocks taken|Owner|Group|Size(bytes)|last modified time|name|
+|---|--|--|--|--|--|--|
+|-rw-r--r--|  1| anand|  staff|  9395| Jan  9 03:33| README.md|
+|-rw-r--r-- | 1| anand|  staff |   86| Dec 30 15:38 |ansible.cfg|
+|-rw-r--r--|  1| anand|  staff|   893| Jan  3 01:22| bootstrap.yml|
+|-rw-r--r--|  1| anand|  staff|   215| Dec 25 09:26| consolidated_install_apache.yml|
+|-rw-r--r--|  1| anand|  staff|   190| Dec 25 09:26| consolidated_inventory|
+|drwxr-xr-x|  4| anand|  staff|   128| Dec 30 15:38| files|
 
+|Prefix | Description|
+|--|--|	
+|- |Regular file, such as an ASCII text file, binary executable, or hard link.|
+|b|Block special file. Block input/output device file such as a physical hard drive.|
+|c|Character special file. Raw input/output device file such as a physical hard drive.|	
+|d|Directory file that contains a listing of other files and directories.|	
+|l|Symbolic link file. Links on any regular file.|	
+|p|Named pipe. A mechanism for interprocess communications.|	
+|s|Socket used for interprocess communication.|
+
+## File System
+A file system is a logical collection of files on a partition or disk. A partition is a container for information and can span an entire hard drive if desired.
+
+Your hard drive can have various partitions which usually contain only one file system, such as one file system housing the /file system or another containing the /home file system.
+|Directory|Description|
+|--|--|
+|/|This is the root directory which should contain only the directories needed at the top level of the file structure|
+|/bin|This is where the executable files are located. These files are available to all users|
+|/dev|These are device drivers|
+|/etc|Supervisor directory commands, configuration files, disk configuration files, valid user lists, groups, ethernet, hosts, where to send critical messages|
+|/lib|Contains shared library files and sometimes other kernel-related files|
+|/boot|Contains files for booting the system|
+|/home|Contains the home directory for users and other accounts|
+|/mnt|Used to mount other temporary file systems, such as cdrom and floppy for the CD-ROM drive and floppy diskette drive, respectively|
+|/proc|Contains all processes marked as a file by process number or other information that is dynamic to the system|
+|/tmp|Holds temporary files used between system boots|
+|/usr|Used for miscellaneous purposes, and can be used by many users. Includes administrative commands, shared files, library files, and others|
+|/var|Typically contains variable-length files such as log and print files and any other type of file that may contain a variable amount of data|
+|/sbin|Contains binary (executable) files, usually for system administration. For example, fdisk and ifconfig utlities|
+|/kernel|Contains kernel files|
+
+### df Command
+The first way to manage your partition space is with the df (disk free) command. The command df -k (disk free) displays the disk space usage in kilobytes.<br>
+You can use the -h (human readable) option to display the output in a format that shows the size in easier-to-understand notation.
+
+### du Command
+The du (disk usage) command enables you to specify directories to show disk space usage on a particular directory.<br>
+This command is helpful if you want to determine how much space a particular directory is taking.
 
 ## Shell Scripting
 
