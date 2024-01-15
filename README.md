@@ -708,18 +708,15 @@ https://superuser.com/a/1060002/167769
 
 
 ### Shell Scripting Exercises
+<details><summary>
+1. Define a variable with the string 'Hello World'<br>
+2. Print the value of the variable you've defined and redirect the output to the file "amazing_output.txt"
+</summary>
+	
+```bash
+#!/usr/bin/env bash
 
-|Name|Topic|Objective & Instructions|Solution|Comments|
-|--------|--------|------|----|----|
-|Hello World|Variables|[Exercise](hello_world.md)|[Solution](solutions/hello_world.md) | Basic
-|Basic date|Variables|[Exercise](basic_date.md)|[Solution](solutions/basic_date.md) | Basic
-|Great Day|Variables|[Exercise](great_day.md)|[Solution](solutions/great_day.md) | Basic
-|Factors|Arithmetic|[Exercise](factors.md)|[Solution](solutions/factors.md) | Basic
-|Argument Check|Conditionals|[Exercise](argument_check.md)|[Solution](solutions/argument_check.md) | Basic
-|Files Size|For Loops|[Exercise](files_size.md)|[Solution](solutions/files_size.md) | Basic
-|Count Chars|Input + While Loops|[Exercise](count_chars.md)|[Solution](solutions/count_chars.md) | Basic
-|Sum|Functions|[Exercise](sum.md)|[Solution](solutions/sum.md) | Basic
-|Number of Arguments|Case Statement|[Exercise](num_of_args.md)|[Solution](solutions/num_of_args.md) | Basic
-|Empty Files|Misc|[Exercise](empty_files.md)|[Solution](solutions/empty_files.md) | Basic
-|Directories Comparison|Misc|[Exercise](directories_comparison.md)|[Solution](solutions/directories_comparison.md) | Basic
-|It's alive!|Misc|[Exercise](host_status.md)|[Solution](solutions/host_status.md) | Intermediate
+HW_STR="Hello World"
+echo $HW_STR > amazing_output.txt
+```
+</details>
