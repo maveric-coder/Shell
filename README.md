@@ -149,6 +149,77 @@ distributions such as Ubuntu, Mint, Fedora and Elementary OS.
 ```
 </details>
 
+To find a word
+```sh
+grep "Linux" welcome.txt
+```
+
+To color the desired word/string
+```sh
+grep --color "free and opensource" welcome.txt
+```
+
+Searching for a string recursively in all directories
+```sh
+grep -r "string-name" *
+grep -r "linux" *
+```
+
+Ignoring case sensitivity
+```sh
+grep -i "linux" abc.txt
+```
+
+Count the lines where strings are matched with -c option
+```sh
+grep -c "Linux" abc.txt
+```
+
+Using Grep to invert Output - The -v option instructs grep to print all lines that do not contain or match the expression
+```sh
+grep -v "linux" abc.txt
+```
+
+Number the lines that contain the search pattern with -n option
+```sh
+grep -n "linux" abc.txt
+```
+
+Search for exact matching word using the -w option
+```sh
+grep -w "opensource" abc.txt
+```
+
+Using pipes with grep
+```sh
+dpkg -L | grep "package-name"
+dpkg -L | grep "openssh"
+```
+
+Print n specific lines from a file
+
+-A prints the searched line and n lines after the result, -B prints the searched line and n lines before the result, and -C prints the searched line and n lines after and before the result. 
+
+Syntax:
+```sh
+grep -A[NumberOfLines(n)] [search] [file]  
+
+grep -B[NumberOfLines(n)] [search] [file]  
+
+grep -C[NumberOfLines(n)] [search] [file]  
+
+grep -A1 linux abc.txt
+```
+
+Using grep with REGEX - regular expressions
+```txt
+^      Matches characters at the beginning of a line
+$      Matches characters at the end of a line
+"."    Matches any character
+[a-z]  Matches any characters between A and Z
+[^ ..] Matches anything apart from what is contained in the brackets
+```
+
 ## Shell Scripting
 
 <details>
