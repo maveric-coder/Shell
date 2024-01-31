@@ -136,6 +136,18 @@ Options Available in grep Command
 |-B n|Prints searched line and n line before the result.|
 |-C n|Prints searched line and n lines after before the result.|
 
+<details>
+<summary>Create a file `abc.txt` with below content</summary>
+```sh
+Welcome to Linux !
+Linux is a free and opensource Operating system that is mostly used by
+developers and in production servers for hosting crucial components such as web
+and database servers. Linux has also made a name for itself in PCs.
+Beginners looking to experiment with Linux can get started with friendlier linux
+distributions such as Ubuntu, Mint, Fedora and Elementary OS.
+```
+</details>
+
 ## Shell Scripting
 
 <details>
