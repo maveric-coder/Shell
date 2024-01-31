@@ -137,8 +137,9 @@ Options Available in grep Command
 |-C n|Prints searched line and n lines after before the result.|
 
 <details>
-<summary>Create a file `abc.txt` with below content</summary>
-```sh
+<summary>Create a file abc.txt with below content</summary>
+
+```txt
 Welcome to Linux !
 Linux is a free and opensource Operating system that is mostly used by
 developers and in production servers for hosting crucial components such as web
